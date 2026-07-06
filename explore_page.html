@@ -3,7 +3,7 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-    <title>Explore Page</title>
+    <title>Explore</title>
     <style>
         /* Global CSS Reset for Hybrid Mobile UI WebViews */
         * {
@@ -186,14 +186,14 @@
             var fallbackEmoji = container.getAttribute('data-fallback');
             var extraClass = container.getAttribute('data-class') || '';
             
-            // 1. Force name token to lowercase and turn spaces into underscores
+            // 1. Force the page identifier values to lowercase and swap out spaces for underscores
             var formattedName = rawName.toLowerCase().replace(/ /g, '_');
-            
-            // 2. Safely encode component names for the web url request chain
             var URLSafePage = encodeURIComponent(formattedName);
             
-            // 3. TARGET GITHUB PAGES ROUTE: This serves correct 'image/png' mime headers to bypass ORB blocks completely
-            var imageUrl = 'https://github.io_' + URLSafePage + '_vine.png';
+            // 2. Base content delivery paths mapped explicitly to your live pages CDN
+            var cdnBase = 'https://zombie22000.github.io/diVineredirect2.0/';
+            var mainUrl = cdnBase + 'icon_' + URLSafePage + '_vine.PNG';
+            var fallbackUrl = cdnBase + 'icon_' + URLSafePage + '_vine.png';
             
             var img = new Image();
             
@@ -202,16 +202,22 @@
             };
             
             img.onerror = function() {
-                var span = document.createElement('span');
-                if (extraClass) {
-                    span.className = extraClass;
+                // If uppercase extension fails, double check lowercase extension asset presence 
+                if (img.src === mainUrl) {
+                    img.src = fallbackUrl;
+                } else {
+                    // Render emoji fallback layer if no remote file handles resolve
+                    var span = document.createElement('span');
+                    if (extraClass) {
+                        span.className = extraClass;
+                    }
+                    span.textContent = fallbackEmoji;
+                    container.appendChild(span);
                 }
-                span.textContent = fallbackEmoji;
-                container.appendChild(span);
             };
             
-            // Trigger download initialization
-            img.src = imageUrl;
+            // Fire image download sequence targeting the requested path format
+            img.src = mainUrl;
         });
     </script>
 </body>
