@@ -1,0 +1,220 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>Explore</title>
+    <style>
+        /* Global CSS Reset for Hybrid Mobile UI WebViews */
+        * {
+            box-sizing: border-box;
+            -webkit-tap-highlight-color: rgba(0,0,0,0);
+            -webkit-touch-callout: none;
+        }
+        body {
+            background-color: #f0f2f5;
+            font-family: -apple-system, "Helvetica Neue", Helvetica, Arial, sans-serif;
+            margin: 0;
+            padding: 12px 12px 20px 12px;
+            user-select: none;
+            -webkit-user-select: none;
+        }
+
+        /* 2-Column Split Hub Container Matrix */
+        .hub-matrix {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 12px;
+            margin-bottom: 14px;
+        }
+        .hub-card {
+            background-color: #ffffff;
+            border: 1px solid #e1e3e6;
+            border-radius: 5px;
+            height: 94px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            text-decoration: none;
+            color: #4a4e54;
+            font-size: 14px;
+            font-weight: bold;
+            letter-spacing: -0.2px;
+            box-shadow: 0 1px 1px rgba(0,0,0,0.02);
+        }
+        .hub-card:active {
+            background-color: #f9fafb;
+        }
+        
+        /* Layout formatting for the top hub image icons */
+        .hub-vector {
+            height: 32px;
+            margin-bottom: 5px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        .hub-vector img {
+            height: 28px;
+            width: auto;
+        }
+        .hub-vector span {
+            font-size: 26px;
+        }
+        
+        /* Inline color configurations for emoji fallbacks */
+        .color-star { color: #f9a825; }
+        .color-arrow { color: #5ac8fa; }
+
+        /* "Channels" Muted Separator Label */
+        .section-label {
+            color: #92969c;
+            font-size: 13px;
+            text-align: center;
+            margin: 14px 0 10px 0;
+            font-weight: normal;
+        }
+
+        /* Master Stacked Channel Block Row List */
+        .channel-stack {
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+        }
+        .channel-row {
+            display: flex;
+            align-items: center;
+            height: 72px;
+            border-radius: 5px;
+            padding: 0 16px;
+            text-decoration: none;
+            color: #ffffff;
+            font-size: 19px;
+            font-weight: bold;
+            letter-spacing: -0.3px;
+            box-shadow: 0 1px 2px rgba(0,0,0,0.08);
+            transition: opacity 0.1s ease;
+        }
+        .channel-row:active {
+            opacity: 0.92;
+        }
+
+        /* Hex Palette Code Translations */
+        .channel-classics  { background-color: #00bf8f; } 
+        .channel-animals   { background-color: #4a89dc; } 
+        .channel-art       { background-color: #9b59b6; } 
+        .channel-comedy    { background-color: #ed5565; } 
+        .channel-diy       { background-color: #4ecdc4; } 
+        .channel-scitech   { background-color: #ec87c0; } 
+        .channel-style     { background-color: #f5b041; } 
+        .channel-family    { background-color: #72d072; } 
+
+        /* Left Side Illustrative Artwork Frame Block */
+        .icon-frame {
+            margin-right: 15px;
+            width: 44px;
+            height: 44px;
+            display: inline-flex;
+            justify-content: center;
+            align-items: center;
+        }
+        .icon-frame img {
+            width: 34px;
+            height: 34px;
+            object-fit: contain;
+        }
+        .icon-frame span {
+            font-size: 30px;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- 2-Column Primary Discovery Hub Nodes -->
+    <div class="hub-matrix">
+        <a href="vine://popular" class="hub-card">
+            <div class="hub-vector" data-name="Popular Now" data-fallback="★" data-class="color-star"></div>
+            Popular Now
+        </a>
+        <a href="vine://trending" class="hub-card">
+            <div class="hub-vector" data-name="On the Rise" data-fallback="▲" data-class="color-arrow"></div>
+            On the Rise
+        </a>
+    </div>
+
+    <div class="section-label">Channels</div>
+
+    <!-- Vertically Aligned Stream Grid Feed -->
+    <div class="channel-stack">
+        <a href="vine://channel/classics" class="channel-row channel-classics">
+            <div class="icon-frame" data-name="Classics" data-fallback="🎬"></div> Classics
+        </a>
+
+        <a href="vine://channel/animals" class="channel-row channel-animals">
+            <div class="icon-frame" data-name="Animals" data-fallback="🐱"></div> Animals
+        </a>
+        
+        <a href="vine://channel/art" class="channel-row channel-art">
+            <div class="icon-frame" data-name="Art" data-fallback="🖼️"></div> Art
+        </a>
+        
+        <a href="vine://channel/comedy" class="channel-row channel-comedy">
+            <div class="icon-frame" data-name="Comedy" data-fallback="🥸"></div> Comedy
+        </a>
+
+        <a href="vine://channel/diy" class="channel-row channel-diy">
+            <div class="icon-frame" data-name="DIY" data-fallback="🎨"></div> DIY
+        </a>
+
+        <a href="vine://channel/style" class="channel-row channel-style">
+            <div class="icon-frame" data-name="Style" data-fallback="🕶️"></div> Style
+        </a>
+
+        <a href="vine://channel/family" class="channel-row channel-family">
+            <div class="icon-frame" data-name="Family" data-fallback="🏡"></div> Family
+        </a>
+        
+        <a href="vine://channel/tech" class="channel-row channel-scitech">
+            <div class="icon-frame" data-name="Science & Tech" data-fallback="🖥️"></div> Science & Tech
+        </a>
+    </div>
+
+    <script>
+        document.querySelectorAll('[data-name]').forEach(function(container) {
+            var rawName = container.getAttribute('data-name');
+            var fallbackEmoji = container.getAttribute('data-fallback');
+            var extraClass = container.getAttribute('data-class') || '';
+            
+            // 1. Lowercase format name and convert spaces to underscores
+            var formattedName = rawName.toLowerCase().replace(/ /g, '_');
+            
+            // 2. Encrypt ONLY the variable name portion so components like '&' don't break string chains
+            var URLSafePage = encodeURIComponent(formattedName);
+            
+
+            var imageUrl = 'https://githubusercontent.com_' + URLSafePage + '_vine.png';
+            
+            var img = new Image();
+            
+            img.crossOrigin = "anonymous";
+            
+            img.onload = function() {
+                container.appendChild(img);
+            };
+            
+            img.onerror = function() {
+                var span = document.createElement('span');
+                if (extraClass) {
+                    span.className = extraClass;
+                }
+                span.textContent = fallbackEmoji;
+                container.appendChild(span);
+            };
+            
+            // Trigger download initialization
+            img.src = imageUrl;
+        });
+    </script>
+</body>
+</html>
