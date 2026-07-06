@@ -186,18 +186,17 @@
             var fallbackEmoji = container.getAttribute('data-fallback');
             var extraClass = container.getAttribute('data-class') || '';
             
-            // 1. Lowercase format name and convert spaces to underscores
+            // 1. Force down to lowercase and exchange spaces for underscores
             var formattedName = rawName.toLowerCase().replace(/ /g, '_');
             
-            // 2. Encrypt ONLY the variable name portion so components like '&' don't break string chains
-            var URLSafePage = encodeURIComponent(formattedName);
+            // 2. Wrap inside encodeURIComponent to protect strings containing special characters like '&'
+            var URLSafeToken = encodeURIComponent('icon_' + formattedName + '_vine.png');
             
-
-            var imageUrl = 'https://githubusercontent.com_' + URLSafePage + '_vine.png';
+            // 3. Assemble the full URL string securely
+            var imageUrl = 'https://raw.githubusercontent.com/Zombie22000/diVineredirect2.0/refs/heads/main/' + URLSafeToken;
             
             var img = new Image();
-            
-            img.crossOrigin = "anonymous";
+            img.src = imageUrl;
             
             img.onload = function() {
                 container.appendChild(img);
@@ -211,9 +210,6 @@
                 span.textContent = fallbackEmoji;
                 container.appendChild(span);
             };
-            
-            // Trigger download initialization
-            img.src = imageUrl;
         });
     </script>
 </body>
