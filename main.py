@@ -7,7 +7,7 @@ app = Flask(__name__)
 logging.basicConfig(level=logging.INFO)
 logger = logging.getLogger(__name__)
 
-MY_IP = "192.168.1.153"
+MY_IP = "insertyouriphere"
 BASE_URL = f"http://{MY_IP}:2017"
 RELAY_URL = "wss://relay.divine.video"
 FFMPEG_PATH = os.path.join("ffmpeg", "bin", "ffmpeg.exe")
