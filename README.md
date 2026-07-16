@@ -7,7 +7,7 @@
 
 
 ---
-Requirements: A Windows computer running Windows 8.1 or later, Python from https://www.python.org/ , FFmpeg n5.1.5 win64 gpl 5.1 from https://github.com/BtbN/FFmpeg-Builds/releases?page=4 .
+Requirements: A Windows computer running Windows 8.1 or later, Python from https://www.python.org/ , FFmpeg n5.1.6 win64 gpl 5.1 from https://github.com/BtbN/FFmpeg-Builds/releases?page=4 .
 Ok so to install the necessary Python dependencies, run:
 
 ```bash
