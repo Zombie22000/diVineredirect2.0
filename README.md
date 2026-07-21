@@ -1,5 +1,5 @@
 <p align="center">
-  <img src="diVineredirect-logo-green.png" alt="diVine Redirect logo green">
+  <img src="divineredirect-logo-green.png" alt="diVine Redirect logo green">
 </p>
 
 
