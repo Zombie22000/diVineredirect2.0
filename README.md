@@ -19,9 +19,8 @@
    ```
 
 2. **Organize Your Files**
-   - Create a new folder for the project
-   - Place `main.py` in this folder
-   - Place your FFmpeg folder in this directory
+   - Extract the diVineredirect release zip (v2.1+) or place `main.py` in a new folder (v2.0)
+   - Place your FFmpeg folder in the same directory
    
    **Important:** Your directory structure must look like:
    ```
