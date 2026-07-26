@@ -1,1 +1,1 @@
-diVineredirect - Windows Vine server. Browse and watch diVine videos through a patched vine app by redirecting API calls to Divine.video. Features: home feed, explore by category, hashtag search, video playback. Requires: Windows 8.1+, Python, FFmpeg.
+diVineredirect - Windows Vine server. Browse and watch diVine videos through a patched vine app by redirecting API calls to Divine.video. Features: home feed, explore by category, hashtag search, video playback.
