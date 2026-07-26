@@ -41,9 +41,9 @@ Press Enter and wait for it to finish.
    
    **Common mistakes to avoid:**
    ```
-   ❌ ffmpeg\ffmpeg\bin\ffmpeg.exe  (too many folders)
-   ❌ ffmpeg-n5.1.5-win64-gpl-5.1\bin\ffmpeg.exe  (didn't rename)
-   ✅ ffmpeg\bin\ffmpeg.exe  (correct)
+   [WRONG] ffmpeg\ffmpeg\bin\ffmpeg.exe  (too many folders)
+   [WRONG] ffmpeg-n5.1.5-win64-gpl-5.1\bin\ffmpeg.exe  (didn't rename)
+   [CORRECT] ffmpeg\bin\ffmpeg.exe  (correct)
    ```
 
 #### Step 3: Add Your IP Address
