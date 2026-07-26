@@ -54,7 +54,7 @@ diVineredirect runs a Flask web server that intercepts and redirects Vine API ca
 ### Architecture
 
 1. **Local API Server** - Runs on port 2017 and mimics Vine API endpoints, redirecting requests to the Nostr relay
-2. **Nostr Relay Integration** - Queries Divine.video relay for Kind 34236 Nostr events (video posts)
+2. **Nostr Relay Integration** - Queries Divine.video relay (relay.divine.video) for Kind 34236 Nostr events (video posts)
 3. **Video Processing** - Downloads and transcodes videos to 480x480 H.264 format using FFmpeg
 4. **Caching System** - Stores video URLs and feed data to reduce relay queries and improve performance
 
