@@ -8,7 +8,7 @@
 
 ### What You Need
 
-- **Windows 8.1 or later**
+- **Windows 8.1 or later** (v2.1 and earlier are Windows-only. macOS and Linux support may come in future versions)
 - **[Python](https://www.python.org/)** - Download the latest version and install it (click the green button on the website). During installation, make sure to check the box that says "Add Python to PATH"
 - **[FFmpeg n5.1.6 win64 gpl 5.1](https://github.com/BtbN/FFmpeg-Builds/releases?page=4)** - A video processing tool. Look for the file named `ffmpeg-n5.1.6-win64-gpl-5.1.zip` and download it
 
