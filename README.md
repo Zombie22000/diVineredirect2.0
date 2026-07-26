@@ -95,7 +95,7 @@ Additional features are planned for future updates.
 
 **Note:** `vine://` protocol URLs map to `/timelines/` endpoints
 
-- `/timelines/main` - Home feed (also accessible via `vine://`)
+- `/timelines/main` or `/timelines/graph` - Home feed (also accessible via `vine://`)
 - `/timelines/tags/<tag_name>` - Videos by tag or category (also accessible via `vine://tag/<tag_name>`)
 - `/timelines/channel/<channel_name>` - Videos by channel (also accessible via `vine://channel/<channel_name>`)
 - `/explore` - Browse categories
