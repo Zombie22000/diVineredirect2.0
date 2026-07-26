@@ -6,75 +6,95 @@
 
 ## Installation
 
-### System Requirements
-- Windows 8.1 or later
-- [Python](https://www.python.org/)
-- [FFmpeg n5.1.6 win64 gpl 5.1](https://github.com/BtbN/FFmpeg-Builds/releases?page=4)
+### What You Need
 
-### Setup Steps
+- **Windows 8.1 or later**
+- **[Python](https://www.python.org/)** - Download the latest version and install it (click the green button on the website). During installation, make sure to check the box that says "Add Python to PATH"
+- **[FFmpeg n5.1.6 win64 gpl 5.1](https://github.com/BtbN/FFmpeg-Builds/releases?page=4)** - A video processing tool. Look for the file named `ffmpeg-n5.1.6-win64-gpl-5.1.zip` and download it
 
-1. **Install Python Dependencies**
-   ```bash
-   pip install flask requests websocket-client
-   ```
+### Step-by-Step Setup
 
-2. **Organize Your Files**
-   - Extract the diVineredirect release zip (v2.1+) or place `main.py` in a new folder (v2.0)
-   - Place your FFmpeg folder in the same directory
-   
-   **Important:** Your directory structure must look like:
+#### Step 1: Install Python Libraries
+Open Command Prompt (press `Win + R`, type `cmd`, then press Enter) and copy-paste this command:
+```bash
+pip install flask requests websocket-client
+```
+Press Enter and wait for it to finish.
+
+#### Step 2: Prepare Your Folder
+1. Create a new folder on your computer (e.g., `C:\diVineredirect`)
+2. Extract the diVineredirect release zip file into this folder (v2.1+) OR place `main.py` here (v2.0)
+3. Extract your FFmpeg zip file so the folder structure looks like this inside your diVineredirect folder:
    ```
    ffmpeg\bin\ffmpeg.exe
    ```
-   Not like:
-   ```
-   ffmpeg\ffmpeg\bin\ffmpeg.exe
-   ffmpeg-n5.1.5-win64-gpl-5.1\bin\ffmpeg.exe
-   ```
-
-3. **Configure Your IP Address**
-   - Open `main.py` with Notepad
-   - Find the line: `MY_IP = "insertyouriphere"`
-   - Replace `insertyouriphere` with your IP address
-   - Save the file
-
-4. **Prepare Your Vine App Patcher**
-   - Use one of these tested Vine app versions:
-     - 1.1.2 iOS
-     - 1.4.5 iOS
-     - 1.4.8 iOS
-     - 5.7.0 iOS
    
-   **Recommended Patcher:** vineredirect - A Jailbreak tweak designed specifically for redirecting Vine API calls
+   **This is the most important part!** Your folder should look like:
+   ```
+   C:\diVineredirect\
+   ├── main.py
+   ├── ffmpeg\
+   │   └── bin\
+   │       └── ffmpeg.exe
+   └── (other files)
+   ```
+   
+   **Common mistakes to avoid:**
+   ```
+   ❌ ffmpeg\ffmpeg\bin\ffmpeg.exe  (too many folders)
+   ❌ ffmpeg-n5.1.5-win64-gpl-5.1\bin\ffmpeg.exe  (didn't rename)
+   ✅ ffmpeg\bin\ffmpeg.exe  (correct)
+   ```
+
+#### Step 3: Add Your IP Address
+1. Open `main.py` with Notepad (right-click → Open with → Notepad)
+2. Find this line:
+   ```
+   MY_IP = "insertyouriphere"
+   ```
+3. Replace `insertyouriphere` with your computer's IP address (for example: `MY_IP = "192.168.1.100"`)
+   - To find your IP: Open Command Prompt and type `ipconfig`. Look for "IPv4 Address"
+4. Save the file (Ctrl+S)
+
+#### Step 4: Get a Patched Vine App
+- Use one of these tested Vine app versions:
+  - 1.1.2 iOS
+  - 1.4.5 iOS
+  - 1.4.8 iOS
+  - 5.7.0 iOS
+  
+- **Recommended:** Use the **vineredirect** Jailbreak tweak to patch your Vine app to connect to diVineredirect
+
+---
 
 ## How It Works
 
-diVineredirect runs a Flask web server that intercepts and redirects Vine API calls to a Nostr relay (Divine.video), fetching archived Vine videos and serving them through a patched mobile app.
+diVineredirect runs a server on your computer that pretends to be Vine. When you open the patched Vine app on your iPhone, it connects to your server instead of the real Vine servers. Your server fetches videos from Divine.video (a Nostr relay that has archived Vine videos) and sends them to your app.
 
-### Architecture
+### What Happens Behind the Scenes
 
-1. **Local API Server** - Runs on port 2017 and mimics Vine API endpoints, redirecting requests to the Nostr relay
-2. **Nostr Relay Integration** - Queries Divine.video relay (relay.divine.video) for Kind 34236 Nostr events (video posts)
-3. **Video Processing** - Downloads and transcodes videos to 480x480 H.264 format using FFmpeg
-4. **Caching System** - Stores video URLs and feed data to reduce relay queries and improve performance
+1. **Local API Server** - Runs on port 2017 on your computer and mimics Vine API endpoints
+2. **Video Source** - Queries Divine.video relay for archived Vine videos (these are stored as Nostr events)
+3. **Video Processing** - Downloads videos and converts them to 480x480 format using FFmpeg
+4. **Caching** - Stores video information locally so it doesn't have to ask Divine.video every time
 
-### Features
+### What You Can Do
 
-#### Working
-- **Home/New Videos Feed** - Displays live Vine videos from the Nostr relay
-- **Explore Section** - Browse channels and categories:
+#### Working Features
+- **Home/New Videos Feed** - Browse live Vine videos from the archive
+- **Explore Section** - Browse by category:
   - Popular Now / On the Rise
   - Channels: Classics (pre-2017 videos), Animals, Art, Comedy, DIY, Style, Family, Science & Tech
 - **Tags** - Search videos by hashtag
-- **Video Playback** - Streams transcoded videos at 480x480 resolution with loop count metadata
+- **Video Playback** - Watch videos with accurate view counts
 
-#### In Development
+#### Coming Soon
 Additional features are planned for future updates.
 
-### Supported Endpoints
+### API Endpoints (Technical Reference)
 
 - `/timelines/main` - Home feed
-- `/timelines/tags/<tag_name>` - Tag-based feeds (popular, trending, recent)
-- `/timelines/channel/<channel_name>` - Channel feeds
-- `/explore` - Interactive explore page with categories
-- `/stream/<event_id>.mp4` - Video streaming
+- `/timelines/tags/<tag_name>` - Videos by tag or category
+- `/timelines/channel/<channel_name>` - Videos by channel
+- `/explore` - Browse categories
+- `/stream/<event_id>.mp4` - Stream a video file
