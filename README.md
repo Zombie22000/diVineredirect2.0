@@ -41,10 +41,12 @@
 
 4. **Prepare Your Vine App Patcher**
    - Use one of these tested Vine app versions:
-     - 1.1.2
-     - 1.4.5
-     - 1.4.8
-     - 5.7.0
+     - 1.1.2 iOS
+     - 1.4.5 iOS
+     - 1.4.8 iOS
+     - 5.7.0 iOS
+   
+   **Recommended Patcher:** vineredirect - A Jailbreak tweak designed specifically for redirecting Vine API calls
 
 ## How It Works
 
