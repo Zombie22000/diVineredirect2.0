@@ -1,6 +1,6 @@
 diVineredirect - Vine Video Archive Server
 
-diVineredirect is a Windows-based server application that allows you to browse and watch archived Vine videos through a patched iOS app. It works by intercepting API calls from the patched Vine app and redirecting them to Divine.video, a Nostr relay that hosts archived Vine content.
+diVineredirect is a Windows-based server application that allows you to browse and watch diVine videos through a patched vine app. It works by intercepting API calls from the patched Vine app and redirecting them to Divine.video, a Nostr relay that hosts archived Vine content.
 
 WHAT YOU NEED:
 - Windows 8.1 or later (v2.1 and earlier are Windows-only)
