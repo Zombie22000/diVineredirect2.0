@@ -50,13 +50,32 @@
 
 ## How It Works
 
-diVineredirect creates a local server that redirects Vine API calls, allowing you to access Vine content through a patched mobile app. The application currently supports the following features:
+diVineredirect runs a Flask web server that intercepts and redirects Vine API calls to a Nostr relay (Divine.video), fetching archived Vine videos and serving them through a patched mobile app.
 
-### Working Features
-- Home/new videos feed (non-placeholder)
-- Explore section (non-placeholder, search not available)
-- Tags
-- Non-placeholder video playback
+### Architecture
 
-### In Development
+1. **Local API Server** - Runs on port 2017 and mimics Vine API endpoints, redirecting requests to the Nostr relay
+2. **Nostr Relay Integration** - Queries Divine.video relay for Kind 34236 Nostr events (video posts)
+3. **Video Processing** - Downloads and transcodes videos to 480x480 H.264 format using FFmpeg
+4. **Caching System** - Stores video URLs and feed data to reduce relay queries and improve performance
+
+### Features
+
+#### Working
+- **Home/New Videos Feed** - Displays live Vine videos from the Nostr relay
+- **Explore Section** - Browse channels and categories:
+  - Popular Now / On the Rise
+  - Channels: Classics (pre-2017 videos), Animals, Art, Comedy, DIY, Style, Family, Science & Tech
+- **Tags** - Search videos by hashtag
+- **Video Playback** - Streams transcoded videos at 480x480 resolution with loop count metadata
+
+#### In Development
 Additional features are planned for future updates.
+
+### Supported Endpoints
+
+- `/timelines/main` - Home feed
+- `/timelines/tags/<tag_name>` - Tag-based feeds (popular, trending, recent)
+- `/timelines/channel/<channel_name>` - Channel feeds
+- `/explore` - Interactive explore page with categories
+- `/stream/<event_id>.mp4` - Video streaming
