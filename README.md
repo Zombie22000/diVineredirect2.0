@@ -1,4 +1,3 @@
-```html
 <p align="center">
   <img src="divineredirect-logo-green.png" alt="diVineredirect logo green">
 </p>
